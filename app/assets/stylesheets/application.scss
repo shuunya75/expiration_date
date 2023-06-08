@@ -1,8 +1,20 @@
+@import 'food';
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+.container {
+  padding:80px 5px 58px 3px ;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: whitesmoke;
 }
 
 .header {

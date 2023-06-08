@@ -1,0 +1,42 @@
+.card {
+  background-color: white;
+  padding: 3px 0;
+  display: flex;
+  border-bottom: 2px dashed black;
+
+  &_image {
+    height: 80px;
+    width: 100px;
+    margin-right: 10px;
+
+    img {
+      width: 100%;
+      height: 80px;
+    }
+  }
+
+  &_contents {
+    position: relative;
+    width: 100%;
+  }
+
+  &_name {
+    font-size: 20px;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 2px dashed rgb(141, 138, 138);
+  }
+
+  &_limit_day {
+    position: absolute;
+    font-size: 14px;
+    bottom: 0;
+  }
+
+  &_count {
+    position: absolute;
+    font-size: 14px;
+    right: 0;
+    bottom: 0;
+  }
+}
