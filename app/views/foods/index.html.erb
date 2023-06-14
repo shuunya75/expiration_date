@@ -1,20 +1,25 @@
 <div class="container">
   <% @foods.each do |food| %>
-    <div class="card">
-      <div class="card_image">
-          <%= image_tag food.food_image %>
+    <%= link_to edit_food_path(food) do %>
+      <div class="card">
+        <div class="card_image">
+            <%= image_tag food.food_image %>
+        </div>
+        <div class="card_contents">
+          <div class="card_name">
+            <%= food.name %>
+          </div>
+          <div class="card_limit_day">
+            <%= food.limit_day %>
+          </div>
+          <div class="card_time_limit">
+            <%= food.deadline %>
+          </div>
+          <div class="card_count">
+            <%= "数量#{food.count}" %>
+          </div>
+        </div>
       </div>
-      <div class="card_contents">
-        <div class="card_name">
-          <%= food.name %>
-        </div>
-        <div class="card_limit_day">
-          <p>2030年1月20日まで</p>
-        </div>
-        <div class="card_count">
-          <p>数量 3個</p>
-        </div>
-      </div>
-    </div>
+      <% end %>
   <% end %>
 </div>

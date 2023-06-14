@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="form_wrapper">
+    <ul>
+      <% @food.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+    <%= form_with(model: @food, local: true) do |f| %>
+      <div>
+        <%= f.label :food_img, '画像' %>
+      </div>
+      <div>
+        <%= f.file_field :food_img, id: 'food_img' %>
+      </div>
+      <div>
+      </div>
+      <div>
+        <%= f.label :name, '食材名' %>
+      </div>
+      <div>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :content, 'メモ' %>
+      </div>
+      <div>
+        <%= f.text_area :content %>
+      </div>
+      <div class="hidden_box">
+        <%= f.radio_button :management, :賞味期限, {id: '1', checked: "checked"} %>
+        <%= f.label '賞味期限', {for: '1'} %>
+        <%= f.radio_button :management, :消費期限, {id: '2'} %>
+        <%= f.label '消費期限', {for: '2'} %>
+        <div>
+          <%= f.radio_button :management, :管理しない, {id: '3'} %>
+          <%= f.label '管理しない', {for: '3'} %>
+        </div>
+        <%= f.date_select :limit, {use_month_numbers: true} %>
+      </div>
+      <div>
+        <%= f.label :count, '数量' %>
+      </div>
+      <div>
+        <%= f.number_field :count, {min: 0, max: 9999, value: 1} %>
+      </div>
+      <%= f.submit '保存', class: 'submit' %>
+    <% end %>
+  </div>
+</div>
