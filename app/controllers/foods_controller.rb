@@ -31,6 +31,12 @@ class FoodsController < ApplicationController
     end
   end
 
+  def destroy
+    food = current_user.foods.find(params[:id])
+    food.destroy!
+    redirect_to root_path, notice: '削除に成功しました'
+  end
+
   private
   def food_params
     params.require(:food).permit(:food_img, :name, :content, :management, :limit, :count)
