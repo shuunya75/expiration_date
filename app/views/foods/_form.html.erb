@@ -46,6 +46,9 @@
         <%= f.number_field :count, {min: 0, max: 9999, value: 1} %>
       </div>
       <%= f.submit '保存', class: 'submit' %>
+      <% if params[:action] == 'edit' %>
+        <%= link_to '削除', food_path(food), data: {turbo_method: :delete, turbo_confirm: "予定を削除しますか？"} %>
+      <% end %>
     <% end %>
   </div>
 </div>

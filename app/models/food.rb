@@ -16,7 +16,7 @@ class Food < ApplicationRecord
     limit_day = "#{limit.year - 2000}年#{limit.month}/#{limit.day}"
 
     if management == '管理しない'
-      ''
+      '管理しない'
     else
       limit_day
     end
