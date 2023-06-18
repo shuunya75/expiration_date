@@ -8,14 +8,35 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/6ca9d2d4fa.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <header class="header">
-      <p class="header_pageTitle">
+      <p class="header_title">
         <%= link_to 'expiration date', root_path %>
       </p>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <%= image_tag 'user.png' , class: 'header_avatar' %>
+          <div class="dropdown_content">
+            <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} %>
+          </div>
+        </div>
+      <% end %>
+    <% if flash.present? %>
+      <div class="flash">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: key) %>
+        <% end %>
+      </div>
+    <% end %>
     </header>
     <%= yield %>
+    <%= link_to new_food_path do %>
+      <div class="float_btn">
+        <i class="fa fa-plus"></i>
+      </div>
+    <% end %>
   </body>
 </html>
