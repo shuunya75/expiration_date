@@ -1,0 +1,48 @@
+.profile {
+  &_user {
+    display: flex;
+    margin-top: 20px;
+
+    &_image {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 16px;
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+      }
+    }
+
+    &_edit_btn {
+      font-size: 12px;
+      border-radius: 4px;
+      border: 1px solid black;
+      padding: 3px 8px 0 8px;
+
+      a {
+        color: black;
+      }
+    }
+
+    &_name {
+      display: flex;
+
+      .name {
+        font-weight: bold;
+        margin-right: 8px;
+      }
+    }
+
+    &_id {
+      font-size: 15px;
+      padding-top: 5px;
+    }
+  }
+}
+
+.notes {
+  font-size: 10px;
+}

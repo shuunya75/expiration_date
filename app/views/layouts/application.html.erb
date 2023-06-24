@@ -18,8 +18,9 @@
       </p>
       <% if user_signed_in? %>
         <div class="dropdown">
-          <%= image_tag 'user.png' , class: 'header_avatar' %>
+          <%= image_tag current_user.avatar_image , class: 'header_avatar' %>
           <div class="dropdown_content">
+            <%= link_to 'プロフィール', profile_path %>
             <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} %>
           </div>
         </div>

@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   has_many :foods, dependent: :destroy
   has_one :profile, dependent: :destroy
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'user.png'
+    end
+  end
 end
