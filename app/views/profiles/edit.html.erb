@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="form_wrapper">
+    <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+    <%= form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f| %>
+      <div>
+        <%= f.label :avatar, '画像' %>
+      </div>
+      <div>
+        <%= f.file_field :avatar, id: 'avatar_img' %>
+      </div>
+      <div>
+        <%= f.label :nickname, '名前' %>
+      </div>
+      <div>
+        <%= f.text_field :nickname %>
+      </div>
+      <div>
+        <%= f.label :my_id, 'ID' %>
+      </div>
+      <div>
+        <%= f.number_field :my_id %>
+      </div>
+      <div class="notes">
+        ※半角の数字で入力してください
+      </div>
+      <div class="notes">
+        ※一桁目は０以外で入力してください
+      </div>
+      <%= f.submit '保存' %>
+    <% end %>
+  </div>
+</div>
