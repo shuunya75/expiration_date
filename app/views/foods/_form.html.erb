@@ -15,6 +15,10 @@
         <%= f.file_field :food_img, id: 'food_img' %>
       </div>
       <div>
+        <%= f.check_box :remove_food %>
+        <%= f.label :remove_food, "画像を削除する" %>
+      </div>
+      <div>
       </div>
       <div>
         <%= f.label :name, '食材名' %>

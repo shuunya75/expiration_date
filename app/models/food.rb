@@ -1,4 +1,6 @@
 class Food < ApplicationRecord
+  validates :name, length: { minimum: 1, maximum: 11 }
+  
   has_one_attached :food_img
   belongs_to :user
 

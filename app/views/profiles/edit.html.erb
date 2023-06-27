@@ -14,6 +14,8 @@
       <div>
         <%= f.file_field :avatar, id: 'avatar_img' %>
       </div>
+      <%= f.check_box :remove_avatar %>
+      <%= f.label :remove_avatar, "画像を削除する" %>
       <div>
         <%= f.label :nickname, '名前' %>
       </div>
