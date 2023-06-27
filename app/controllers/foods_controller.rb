@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
       redirect_to root_path(@food), notice: '保存できました'
     else
       flash.now[:error] = '保存できませんでした'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -24,11 +24,16 @@ class FoodsController < ApplicationController
 
   def update
     @food = current_user.foods.find(params[:id])
+
+    if params[:food][:remove_food] == "1"
+      @food.food_image.purge
+    end
+
     if @food.update(food_params)
       redirect_to root_path, notice: '更新されました'
     else
       flash.now[:error] = '更新できませんでした'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

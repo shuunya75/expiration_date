@@ -17,11 +17,16 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile || current_user.build_profile
     @profile.assign_attributes(profile_params)
+
+    if params[:profile][:remove_avatar] == "1"
+      @profile.avatar.purge
+    end
+
     if @profile.save
       redirect_to profile_path, notice: 'プロフィール更新'
     else
       flash.now[:error] = '更新できませんでした'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
