@@ -1,0 +1,20 @@
+<div class="container profile">
+  <div class="form_wrapper">
+    <div class="profile_user">
+      <div class="profile_user_image">
+        <%= image_tag @user.avatar_image %>
+      </div>
+      <div>
+        <div class="profile_user_name">
+          <div class="name">
+            <%= @user.profile.nickname %>
+          </div>
+        </div>
+        <div class="profile_user_id">
+          ID
+          <%= @user.profile.my_id %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
