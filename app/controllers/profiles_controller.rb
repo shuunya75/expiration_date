@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @q = Profile.ransack(params[:q])
+    @results = @q.result
     @profile = current_user.profile
     if @profile
       @profile = current_user.profile
@@ -27,6 +29,22 @@ class ProfilesController < ApplicationController
     else
       flash.now[:error] = '更新できませんでした'
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def search
+    @q = Profile.ransack(params[:q])
+    @results = @q.result
+    if params[:q][:'my_id_eq'].length > 10
+      redirect_to profile_path, notice: "10桁までで入力してください"
+    elsif params[:q][:'my_id_eq'] == ""
+      redirect_to profile_path, notice: "検索キーワードがありません。"
+    elsif params[:q][:'my_id_eq'].to_i == current_user.profile.my_id
+      redirect_to profile_path
+    elsif @results.present?
+      redirect_to account_path(@results.first.user)
+    else
+      redirect_to profile_path, notice: '存在しません'
     end
   end
 

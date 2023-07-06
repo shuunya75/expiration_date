@@ -5,5 +5,11 @@ Rails.application.routes.draw do
 
   resources :foods
 
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[show edit update] do
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :accounts, only: [:show]
 end
