@@ -10,6 +10,10 @@ class ProfilesController < ApplicationController
     else
       redirect_to edit_profile_path
     end
+    followings = current_user.followings.pluck(:id)
+    followers = current_user.followers.pluck(:id)
+    @mutual_follow = followings & followers
+    @user = User.where(id: @mutual_follow)
   end
 
   def edit

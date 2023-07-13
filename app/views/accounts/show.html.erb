@@ -9,10 +9,18 @@
           <div class="name">
             <%= @user.profile.nickname %>
           </div>
+          <div class="profile_user_edit_btn">
+            <% if current_user&.has_followed?(@user) %>
+              <%= link_to 'フォロー中', account_follow_path(@user), data: {turbo_method: 'delete'} %>
+            <% else %>
+              <%= link_to 'フォローする', account_follows_path(@user), data: {turbo_method: 'post'} %>
+            <% end %>
+          </div>
         </div>
         <div class="profile_user_id">
           ID
           <%= @user.profile.my_id %>
+          <p>お互いにフォローすると共有されます</p>
         </div>
       </div>
     </div>
