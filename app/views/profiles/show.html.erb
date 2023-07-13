@@ -25,5 +25,28 @@
         <%= f.submit '検索' %>
       <% end %>
     </div>
+    <div class="share_list">
+      <%= "共有しているユーザー#{@user.count}人" %>
+      <% @user.each do |user| %>
+        <%= link_to account_path(user) do %>
+          <div class="profile_user">
+            <div class="profile_user_image">
+              <%= image_tag user.avatar_image %>
+            </div>
+            <div class="profile_user_basicInfo">
+              <div class="profile_user_name">
+                <div class="name">
+                  <%= user.profile.nickname %>
+                </div>
+              </div>
+              <div class="profile_user_id">
+                ID
+                <%= user.profile.my_id %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
